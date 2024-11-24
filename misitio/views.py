@@ -4,11 +4,11 @@ import datetime
 
 def hora_actual(request):
     ahora = datetime.datetime.now()
-    html = " <html><body>It is now %s .</body></html> " % ahora
     
-    return HttpResponse(html)
+    return render(request, 'hora.html', {'hora':ahora})
 
 def suma_hora(request, numero):
+    # debemos cambiar este metodo tambien 
     print (numero)
     numero = int(numero)
     ahora = datetime.datetime.now()
