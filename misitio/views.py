@@ -8,6 +8,13 @@ def hora_actual(request):
     
     return HttpResponse(html)
 
+def suma_hora(request, numero):
+    numero = int(numero)
+    ahora = datetime.datetime.now()
+    suma = ahora + datetime.timedelta(hours=numero)
+    html = " <html><body>In %s hour(s), it will be %s .</body></html> " % (numero, suma)
+    return HttpResponse(html)
+
 def primera_pagina(request):
 
     return render(request, 'index.html')

@@ -16,10 +16,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from .views import primera_pagina
+from .views import primera_pagina, hora_actual, suma_hora
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', primera_pagina, name = 'Home'),
+    path('hora', hora_actual, name = 'Hora'),
+    path('suma_hora/<numero>', suma_hora, name = 'Suma')
+    
 
 ]
