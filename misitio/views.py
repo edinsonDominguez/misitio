@@ -1,4 +1,5 @@
 from django.http import HttpResponse
+from django.shortcuts import render
 import datetime
 
 def hora_actual(request):
@@ -6,3 +7,7 @@ def hora_actual(request):
     html = " <html><body>It is now %s .</body></html> " % ahora
     
     return HttpResponse(html)
+
+def primera_pagina(request):
+
+    return render(request, 'index.html')
