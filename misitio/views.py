@@ -1,6 +1,10 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 import datetime
+from .logica import Tarea
+from .persona import Persona
+
+mi_tarea = Tarea()
 
 def hora_actual(request):
     ahora = datetime.datetime.now()
@@ -23,3 +27,13 @@ def primera_pagina(request):
 
     return render(request, 'index.html')
 
+
+def persona(request):
+    p = Persona    
+
+    return render(request, 'persona.html', {'persona': p('edinson', 'dominguez', '12')})
+
+def persona_sistema(request):
+    p2 = mi_tarea.registrarPersona
+
+    return render(request, 'persona_sistem.html', {'persona2': p2})
