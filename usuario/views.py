@@ -49,5 +49,3 @@ def login_usuario(request):
   
     form = AuthenticationForm()
     return render(request, 'login_user.html', {'form':form})
-
-
