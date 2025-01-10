@@ -3,6 +3,11 @@
 {% block content %}
 <section>
     <h3>Login usuario</h3>
+    <form method="POST" action="">{% csrf_token %}
+        {{ form }}
+        <button type="submit">ingresar</button>
+    </form>
+
 </section>
 
 {% endblock %}
