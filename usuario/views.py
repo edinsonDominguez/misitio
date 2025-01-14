@@ -1,17 +1,3 @@
-<<<<<<< HEAD
-from django.shortcuts import render
-
-# Create your views here.
-
-def ver_alcoba(request):
-    return render(request, 'alcobas.html')
-
-
-def registrar_alcobas(request):
-    return render(request, 'registro_alcobas.html')
-
-
-=======
 from django.shortcuts import render, redirect
 from django.views.generic import View
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
@@ -63,4 +49,3 @@ def login_usuario(request):
   
     form = AuthenticationForm()
     return render(request, 'login_user.html', {'form':form})
->>>>>>> usuario
