@@ -7,6 +7,6 @@ class Producto(models.Model):
     inventario = models.IntegerField()
     estado = models.BooleanField(auto_created=True)
     foto_primaria = models.ImageField(upload_to='producto')
-    
+
     def __str__(self):
-        return '%s %s' % (self.nombre, self.inventario)
+        return '%s %s %s' % (self.nombre, self.valor, self.fecha_registro)
