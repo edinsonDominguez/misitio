@@ -3,6 +3,10 @@
 {% block content %}
 <section>
     <h3>aqui se van a registrar las alcobas</h3>
+    <form action = "registro" method="POST">{% csrf_token %}
+        {{ form }}
+        <button type="submit">Registrar Producto</button>
+    </form>
 </section>
 
 {% endblock %}
