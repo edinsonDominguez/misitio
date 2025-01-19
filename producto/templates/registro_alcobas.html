@@ -2,11 +2,19 @@
 
 {% block content %}
 <section>
-    <h3>aqui se van a registrar las alcobas</h3>
-    <form action = "registro" method="POST">{% csrf_token %}
-        {{ form }}
-        <button type="submit">Registrar Producto</button>
-    </form>
+    <div class="row">
+        <div class="col-12">
+            <h3>Registro Producto</h3>
+        </div>
+
+        <div class="col-12">
+    
+        <form action = "registro" method="POST" class='form-label form-control'>{% csrf_token %}
+            {{ form }}
+            <button type="submit">Registrar Producto</button>
+        </form>
+        </div>    
+    </div>
 </section>
 
 {% endblock %}
