@@ -7,12 +7,13 @@ class Categoria(models.Model):
         return '%s' % (self.nombre)
 
 class Imagen(models.Model):
-    foto1 = models.ImageField(upload_to='producto')
-    foto2 = models.ImageField(upload_to='producto')
-    foto3 = models.ImageField(upload_to='producto')
-    foto4 = models.ImageField(upload_to='producto')
-    foto5 = models.ImageField(upload_to='producto')
-    foto6 = models.ImageField(upload_to='producto')
+    nombre_album = models.CharField(max_length=30, null=True, blank=True)
+    foto1 = models.ImageField(upload_to='producto', null=True, blank=True)
+    foto2 = models.ImageField(upload_to='producto', null=True, blank=True)
+    foto3 = models.ImageField(upload_to='producto', null=True, blank=True)
+    foto4 = models.ImageField(upload_to='producto', null=True, blank=True)
+    foto5 = models.ImageField(upload_to='producto', null=True, blank=True)
+    foto6 = models.ImageField(upload_to='producto', null=True, blank=True)
     
     def __str__(self):
         return '%s' % (self.foto1)
