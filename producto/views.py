@@ -1,17 +1,19 @@
 from django.shortcuts import render, redirect
-from .forms import Producto, Album
+from .forms import Producto, AlbumForm
+from .models import Imagen
+
 # Create your views here.
 def get_album(request):
     if request.method == "POST":
         print ('si entro a get_album ')
-        form = Album(request.POST)
+        form = AlbumForm(request.POST)
         
         if form.is_valid(): 
             print ('si valido los registros')
             ## va la parte del registro de datos
             return redirect('Alcoba') # pagina que se a retornar 
     else:
-        form = Album()
+        form = AlbumForm()
     return render(request, 'registro_imagen.html', {'form':form})  
 
 def get_producto(request):

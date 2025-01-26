@@ -11,6 +11,13 @@
     
         <form action = "registro" method="POST" class='form-label form-control' enctype="multipart/form-data">{% csrf_token %}
             {{ form }}
+            
+            <!-- para estudiar esta parte 
+             <div class = 'form-label form-control'>
+                {{ form.nombre.label }}
+                {{ form.nombre }}
+            </div>
+            --> 
             <button type="submit">Registrar Producto</button>
         </form>
         </div>    

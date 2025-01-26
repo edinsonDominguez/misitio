@@ -3,7 +3,7 @@ from django.contrib import admin
 from producto.models import Producto,Categoria,Imagen
 
 class ProductoAdmin(admin.ModelAdmin):
-    list_display = ('fecha_registro', 'nombre', 'valor', 'inventario', 'categoria_producto', 'imagen_producto')
+    list_display = ('fecha_registro', 'nombre', 'valor', 'inventario', 'categoria_producto', 'usuario')
     list_filter = ('fecha_registro', 'inventario')
     ordering = ('valor',)
     search_fields = ('nombre',)
