@@ -8,6 +8,10 @@ class ProductoAdmin(admin.ModelAdmin):
     ordering = ('valor',)
     search_fields = ('nombre',)
 
+    def save_model(self, request, obj, form, change):
+        obj.usuario = request.user 
+        return super().save_model(request, obj, form, change)
+
 class CategoriaAdmin(admin.ModelAdmin):
     list_display = ('nombre',)
 

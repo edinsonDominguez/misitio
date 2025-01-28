@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.conf import settings
 
 class Categoria(models.Model):
     nombre = models.CharField(max_length=30)
@@ -13,8 +14,8 @@ class Producto(models.Model):
     fecha_registro = models.DateField(auto_now_add=True)
     inventario = models.IntegerField()
     estado = models.BooleanField(default=True)
-    categoria_producto = models.ForeignKey(Categoria, on_delete = models.CASCADE)
-    usuario = models.ForeignKey(User, on_delete=models.CASCADE)
+    categoria_producto = models.ForeignKey(Categoria, on_delete = models.CASCADE, null=True, blank=True)
+    usuario = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
 
     def __str__(self):
         return '%s' % (self.nombre)
