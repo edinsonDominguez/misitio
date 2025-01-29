@@ -6,7 +6,7 @@ from .models import Imagen
 def get_album(request):
     if request.method == "POST":
         print ('si entro a get_album ')
-        form = AlbumForm(request.POST)
+        form = AlbumForm(request.POST, request.FILES)
         
         if form.is_valid(): 
             print ('si valido los registros')

@@ -22,12 +22,12 @@ class Producto(models.Model):
 
 class Imagen(models.Model):
     nombre_album = models.CharField(max_length=30, null=True, blank=True)
-    foto1 = models.ImageField(upload_to='producto', null=True, blank=True)
-    foto2 = models.ImageField(upload_to='producto', null=True, blank=True)
-    foto3 = models.ImageField(upload_to='producto', null=True, blank=True)
-    foto4 = models.ImageField(upload_to='producto', null=True, blank=True)
-    foto5 = models.ImageField(upload_to='producto', null=True, blank=True)
-    foto6 = models.ImageField(upload_to='producto', null=True, blank=True)
+    foto1 = models.ImageField(upload_to='producto', null=True)
+    foto2 = models.ImageField(upload_to='producto', null=True)
+    foto3 = models.ImageField(upload_to='producto', null=True)
+    foto4 = models.ImageField(upload_to='producto', null=True)
+    foto5 = models.ImageField(upload_to='producto', null=True)
+    foto6 = models.ImageField(upload_to='producto', null=True)
     producto_imagen = models.ForeignKey(Producto, on_delete = models.CASCADE, null=True, blank=True)
     
     def __str__(self):

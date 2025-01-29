@@ -24,13 +24,12 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('pagina/', include('producto.urls')),
     path('usuario/', include('usuario.urls')),
-    path('home', primera_pagina, name = 'Home'),
+    path('home/', include('home.urls')),
+    path('inicio', primera_pagina, name = 'Home'),
     path('hora', hora_actual, name = 'Hora'),
     path('suma_hora/<numero>', suma_hora, name = 'Suma'),
     path('nombre/<nombre>', nombre_usuario, name = 'Nombre'),
     path('persona', persona, name = 'Persona'),
     path('persona_sistema', persona_sistema, name = 'Persona2'),
     
-]
-
-urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
+]+ static(settings.STATIC_URL, document_root=settings.MEDIA_ROOT)
