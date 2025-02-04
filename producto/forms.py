@@ -12,7 +12,7 @@ class AlbumForm(forms.Form):
     foto6 = forms.ImageField(label='foto6', required=False)
     producto = forms.ModelChoiceField(label='producto', queryset=Producto.objects.all())
 
-class Producto(forms.Form):
+class ProductoForm(forms.Form):
     nombre = forms.CharField(label='nombre', max_length=100)
     valor = forms.IntegerField(label='precio')
     inventario = forms.IntegerField(label='cantidad')

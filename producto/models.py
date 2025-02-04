@@ -13,7 +13,7 @@ class Producto(models.Model):
     valor = models.IntegerField()
     fecha_registro = models.DateField(auto_now_add=True)
     inventario = models.IntegerField()
-    estado = models.BooleanField(default=True)
+    estado = models.BooleanField(default=True, auto_created=True)
     categoria_producto = models.ForeignKey(Categoria, on_delete = models.CASCADE, null=True, blank=True)
     usuario = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
 
