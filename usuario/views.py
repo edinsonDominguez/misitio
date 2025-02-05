@@ -27,7 +27,7 @@ class Registro(View):
 ## ok
 def cerrar_sesion(request):
     logout(request)
-    return redirect('Ingreso')
+    return redirect('Login')
 
 ##
 def login_usuario(request):
@@ -41,7 +41,7 @@ def login_usuario(request):
             usuario = authenticate(username=nombre_usuario, password=contra_usuario)
             if usuario is not None:
                 login(request, usuario)
-                return redirect('Alcoba')
+                return redirect('Inicio')
             else:
                 messages.error(request, 'usuario no valido')
         else:

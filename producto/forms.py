@@ -17,4 +17,4 @@ class ProductoForm(forms.Form):
     valor = forms.IntegerField(label='precio')
     inventario = forms.IntegerField(label='cantidad')
     categoria = forms.ModelChoiceField(label='categoria', queryset=Categoria.objects.all())
-    usuario = forms.ModelChoiceField(label='usuario', queryset=User.objects.all())
+    #usuario = forms.ModelChoiceField(label='usuario', queryset=User.objects.all())

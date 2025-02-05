@@ -24,8 +24,14 @@ def registrar_producto(request):
         if form.is_valid(): 
             print ('si valido')
             p = Producto()
+            p.usuario = request.user
+            p.nombre = form.cleaned_data['nombre']
+            p.valor = form.cleaned_data['valor']
+            p.inventario = form.cleaned_data['inventario']
+            p.categoria_producto = form.cleaned_data['categoria']
             
-        
+            print(p.nombre, p.valor, p.inventario, p.categoria_producto, p.usuario)
+            p.save()           
             ## va la parte del registro de datos
             return redirect('ver_lista') # pagina que se a retornar 
     else:
