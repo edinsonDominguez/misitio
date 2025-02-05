@@ -27,7 +27,7 @@ def registrar_producto(request):
             
         
             ## va la parte del registro de datos
-            return redirect('Alcoba') # pagina que se a retornar 
+            return redirect('ver_lista') # pagina que se a retornar 
     else:
         form = ProductoForm()
     return render(request, 'registro_alcobas.html', {'form':form})    
@@ -36,6 +36,12 @@ def registrar_producto(request):
 def ver_alcoba(request):
     return render(request, 'alcobas.html')
 
+
+def ver_registro(request):
+    return render(request, 'productos_registrados.html')
+
+def ver_inicio(request):
+    return render(request, 'inicio.html')
 
 #def registrar_alcobas(request):
  #   return render(request, 'registro_alcobas.html')
