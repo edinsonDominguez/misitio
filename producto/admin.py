@@ -4,7 +4,7 @@ from producto.models import Producto,Categoria,Imagen
 
 class ProductoAdmin(admin.ModelAdmin):
     list_display = ('fecha_registro', 'nombre', 'valor', 'inventario', 'categoria_producto', 'usuario', 'foto1')
-    list_filter = ('fecha_registro', 'inventario')
+    list_filter = ('fecha_registro', 'usuario')
     ordering = ('-fecha_registro',)
     search_fields = ('nombre',)
 

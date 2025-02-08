@@ -1,10 +1,28 @@
 {% extends 'usuario.html' %}
-
+{% load static %}
 {% block content %}
 <section class="container border">
     <h4>Productos registrados</h4>
     <a href="{% url 'RegistroPro' %}">volver a registrar </a>
     <a href="{% url 'Inicio' %}">volver al inicio </a>
-
 </section>
+
+<div class="container-fluid border">
+    {% for p in producto %}
+        <p>{{ p.nombre }}</p>
+        <p>{{ p.valor }}</p>
+        <p>{{ p.inventario }}</p>
+        {% if p.foto1 %}
+            <p> si hay foto </p>
+            <img src="static producto/{{ p.foto1.url }}">
+        {% endif %}
+
+        
+        
+        
+        
+        
+
+    {% endfor %}
+</div>
 {% endblock %}
