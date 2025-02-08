@@ -44,7 +44,7 @@ def registrar_producto(request):
             return redirect('ver_productos') # pagina que se a retornar 
     else:
         form = ProductoForm()
-    return render(request, 'registro_alcobas.html', {'form':form})    
+    return render(request, 'registro_productos.html', {'form':form})    
 
 
 def ver_alcoba(request):
@@ -53,9 +53,6 @@ def ver_alcoba(request):
 
 def ver_producto(request):
     return render(request, 'productos_registrados.html')
-
-def ver_album(request):
-    return render(request, 'albumnes_registrados.html')
 
 def ver_inicio(request):
     return render(request, 'inicio.html')
