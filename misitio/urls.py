@@ -32,4 +32,5 @@ urlpatterns = [
     path('persona', persona, name = 'Persona'),
     path('persona_sistema', persona_sistema, name = 'Persona2'),
     
-]+ static(settings.STATIC_URL, document_root=settings.MEDIA_ROOT)
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+#settings.STATIC_URL, 
