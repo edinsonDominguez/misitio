@@ -1,0 +1,57 @@
+{% extends 'usuario.html' %}
+
+{% block content %}
+<section>
+    
+    <div class="container ">
+        <a href="{% url 'Inicio' %}">volver al inicio</a>
+       
+        
+        <div class="row ">
+        {% for p in galeria %}
+            
+                {% if p.foto1 %}
+                <h3 class = "px-2">{{ p.nombre }}</h3>
+            <div class="d-flex px-4">
+                <div class="col-2 ">
+                    <img class = "rounded img-fluid" src=" {{ p.foto1.url }} ">
+                {% endif %}    
+                </div>
+
+                <div class="col-2">
+                {% if p.foto2 %}
+                    <img class = "rounded img-fluid" src=" {{ p.foto2.url }} ">
+                {% endif %}
+                </div>
+                
+                <div class="col-2">
+                    {% if p.foto3 %}
+                    <img class = "rounded img-fluid" src=" {{ p.foto3.url }} ">
+                    {% endif %}
+                </div>
+
+                <div class="col-2">
+                    {% if p.foto4 %}
+                    <img class = "rounded img-fluid" src=" {{ p.foto4.url }} ">
+                    {% endif %}
+                </div>
+                
+                <div class="col-2">
+                    {% if p.foto5 %}
+                    <img class = "rounded img-fluid" src=" {{ p.foto5.url }} ">
+                    {% endif %}
+                </div>
+    
+                <div class="col-2">
+                    {% if p.foto6 %}
+                    <img class = "rounded img-fluid" src=" {{ p.foto6.url }} ">
+                    {% endif %}
+                </div>
+
+            </div>
+                    
+        {% endfor %}
+        </div>   
+    </div>
+</section>
+{% endblock %}

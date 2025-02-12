@@ -1,5 +1,5 @@
 {% extends 'usuario.html' %}
-{% load static %}
+
 {% block content %}
 <section class="container border">
     <h4>Productos registrados</h4>
@@ -16,12 +16,6 @@
             <p> si hay foto </p>
             <img src=" {{ p.foto1.url }} ">
         {% endif %}
-
-        
-        
-        
-        
-        
 
     {% endfor %}
 </div>

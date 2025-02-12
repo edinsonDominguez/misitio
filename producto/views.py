@@ -43,5 +43,10 @@ def ver_producto(request):
 def ver_inicio(request):
     return render(request, 'inicio.html')
 
+
+def galeria_usuario(request):
+    mis_fotos = Producto.objects.filter(usuario=request.user)
+    return render(request, 'galeria_fotos.html', {'galeria': mis_fotos})
+
 #def registrar_alcobas(request):
  #   return render(request, 'registro_alcobas.html')
