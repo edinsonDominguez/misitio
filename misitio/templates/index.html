@@ -12,6 +12,13 @@
     <title>Distri_Hogar</title>
 </head>
 <body>
+
+    {% if user.is_authenticated %}
+        <h1>si esta el usuario {{ user.username}}</h1>
+        {% include 'navegacion_usuario.html' %}
+    {% endif %}
+b
+
     {% include 'head.html' %}
     <div class="container-fluid">
     

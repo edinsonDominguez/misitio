@@ -22,9 +22,9 @@ from .views import primera_pagina, hora_actual, suma_hora, nombre_usuario, perso
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', include('home.urls')),
     path('producto/', include('producto.urls')),
     path('usuario/', include('usuario.urls')),
-    path('home/', include('home.urls')),
     path('inicio', primera_pagina, name = 'Home'),
     path('hora', hora_actual, name = 'Hora'),
     path('suma_hora/<numero>', suma_hora, name = 'Suma'),
