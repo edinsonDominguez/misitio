@@ -25,7 +25,7 @@ urlpatterns = [
     path('', include('home.urls')),
     path('producto/', include('producto.urls')),
     path('usuario/', include('usuario.urls')),
-    path('inicio', primera_pagina, name = 'Home'),
+    path('primera_pagina', primera_pagina, name = 'Primera'),
     path('hora', hora_actual, name = 'Hora'),
     path('suma_hora/<numero>', suma_hora, name = 'Suma'),
     path('nombre/<nombre>', nombre_usuario, name = 'Nombre'),

@@ -12,7 +12,10 @@
     <title>Distri_Hogar</title>
 </head>
 <body>
-    
+    {% if user.is_authenticated  %}
+        {{ user.username }}
+        {% include 'navegacion_usuario.html' %}
+    {% endif %}
     <div class="container-fluid">
     
     {% block content %}
