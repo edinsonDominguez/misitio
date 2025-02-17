@@ -31,22 +31,35 @@ def registrar_producto(request):
     return render(request, 'registro_productos.html', {'form':form})    
 
 
-
-def ver_alcoba(request):
-    return render(request, 'alcobas.html')
-
-
 def ver_producto(request):
-    mi_producto = Producto.objects.filter(usuario=request.user)
-    return render(request, 'productos_registrados.html', {'producto':mi_producto})
+    nombre_buscar = request.GET.get('q', '')
+       
+    if nombre_buscar:
+        print('nombre: ', nombre_buscar)
+        mi_producto = Producto.objects.filter(nombre=nombre_buscar, usuario=request.user)
+    else:
+        print('no hay que mostrar')
+        #miProducto = Producto.objects.all() 
+        mi_producto = Producto.objects.filter(usuario=request.user)
+
+        #return render(request, 'productos.html', {'producto': miProducto, 'nombre': nombre_buscar})
+    return render(request, 'productos_registrados.html', {'producto':mi_producto, 'nombre': nombre_buscar})
 
 def ver_inicio(request):
     return render(request, 'inicio.html')
 
 
 def galeria_usuario(request):
-    mis_fotos = Producto.objects.filter(usuario=request.user)
-    return render(request, 'galeria_fotos.html', {'galeria': mis_fotos})
+    nombre_buscar = request.GET.get('q', '')
+       
+    if nombre_buscar:
+        print('nombre: ', nombre_buscar)
+        mis_fotos = Producto.objects.filter(usuario=request.user, nombre=nombre_buscar)
+    else:
+        print('no hay que mostrar')
+        mis_fotos = Producto.objects.filter(usuario=request.user)
+ 
+    return render(request, 'galeria_fotos.html', {'galeria': mis_fotos, 'nombre': nombre_buscar})
 
 #def registrar_alcobas(request):
  #   return render(request, 'registro_alcobas.html')

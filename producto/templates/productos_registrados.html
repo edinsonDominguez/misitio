@@ -8,6 +8,15 @@
 </section>
 
 <div class="container-fluid border">
+
+    <div>
+        <p>buscador</p>
+        <form action="vista_productos" method="GET">
+            <input type="text" name="q" value="{{ nombre|escape }}">
+            <input type="submit" value="buscar">
+        </form>
+    </div>
+
     {% for p in producto %}
         <p>{{ p.nombre }}</p>
         <p>{{ p.valor }}</p>
