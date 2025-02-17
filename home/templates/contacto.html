@@ -1,7 +1,30 @@
 {% extends 'index.html' %}
 {% block content %}
 <section>
-    <h2>Contacto</h2>
+    <div class="container">
+        <h4>Contacto</h4>
+        <p> nos puedes escribir a nuestro correo electronico empresarial </p>
+        
+        {% if "valido" in request.POST %}
+            <p> se ha enviado la informacion correctamente !!</p>
+        {% endif %}
+        
+        <div>
+            <form action="contacto" method="POST">{% csrf_token %}
+                {{ miform.nombre }}
+
+                {{miform.correo }}
+
+                {{miform.comentario}}
+
+                <input type="submit" value="Enviar">
+            </form>
+            
+        </div>
+        <p>tambien manejamos las siguientes vias de contacto !!</p>
+    </div>
+
+
 </section>
 
 {% endblock %}
