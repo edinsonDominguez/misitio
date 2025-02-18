@@ -21,26 +21,16 @@ def ver_productos(request):
 
 def ver_contacto(request):
 
-    miform = FormContacto(request.POST)
+    if request.method == "POST":
+        print ('si entro formulario !!')
+        mi_form = FormContacto(request.POST)
 
-    if miform.is_valid():
-        """
-        esta es la logica correspondiente al envio del correo electronico
-            nombre = request.POST.get('nombre')
-            correo = request.POST.get('email')
-            mensaje = request.POST.get('contenido')
-            
-            email = EmailMessage('Mensaje del asunto: ', 
-                         'nombre de usuario: {} \n correo: {} \n\n mensaje: {}'.format(nombre, correo, mensaje),
-                         '', ['correo@gmail.com'], reply_to=[correo])
-
-            adicional hay que agregar una variables en settings
-
-        """
-
-        return redirect('mensaje_correo')
+        if mi_form.is_valid():
+            return redirect('mensaje_correo')
     
-    return render(request, 'contacto.html', {'miform':miform})
+    else:
+        mi_form = FormContacto()
+    return render(request, 'contacto.html', {'form':mi_form})
 
 # mensaje exitoso de envio del correo
 def ver_mensaje_correo(request):

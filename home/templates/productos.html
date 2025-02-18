@@ -3,7 +3,7 @@
 <section>
     <div class="col-12 border">{% include 'menu_secundario.html' %}</div>
 
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
             <div class="col border">1</div>
             <div class="col border">2</div>
@@ -26,11 +26,11 @@
             </form>
         </div>
         
-       <div class="d-flex"> 
+       <div class="row row-cols-4 g-4"> 
         {% for p in producto %}
-        <div class="col-3">    
+        <div class="col">    
         
-        <div class="card" style="width: 18rem;">
+        <div class="card border-warning" style="width: 18rem;">
             {% if p.foto1 %}
                 <img src="{{ p.foto1.url }}" class="card-img-top" alt="producto">
             {% endif %}

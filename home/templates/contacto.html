@@ -6,17 +6,13 @@
         <h4>Contacto</h4>
         <p> nos puedes escribir a nuestro correo electronico empresarial </p>
         
-        {% if "valido" in request.POST %}
-            <p> se ha enviado la informacion correctamente !!</p>
-        {% endif %}
-        
-        <div>
+        <div class = "border">
             <form action="contacto" method="POST">{% csrf_token %}
                 
                 <!-- nombre del mensaje -->
-                {{ miform|crispy }} 
+                {{ form|crispy }} 
                 
-                <input type="submit" value="Enviar">
+                <button type="submit">enviar</button>
             </form>
             
         </div>
