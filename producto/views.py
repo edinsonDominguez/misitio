@@ -61,5 +61,15 @@ def galeria_usuario(request):
  
     return render(request, 'galeria_fotos.html', {'galeria': mis_fotos, 'nombre': nombre_buscar})
 
-#def registrar_alcobas(request):
- #   return render(request, 'registro_alcobas.html')
+# se muestra la informacion del producto que seleccionamos 
+def producto_usuario(request, producto_id):
+    mi_producto = Producto.objects.get(id=producto_id)
+    return render(request, 'info_producto_usuario.html', {'producto': mi_producto})
+
+# edita los campos de los productos
+def editar_producto(request, producto_id):
+    return render(request, 'editar_producto.html')
+
+# elimina el producto de la vista usuario
+def eliminar_producto(request, producto_id):
+    return render(request, 'mensaje_eliminar.html')

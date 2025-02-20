@@ -1,5 +1,4 @@
 {% extends 'usuario.html' %}
-
 {% block content %}
 <section class="container border">
     <h4>Productos registrados</h4>
@@ -16,16 +15,42 @@
             <input type="submit" value="buscar">
         </form>
     </div>
-
-    {% for p in producto %}
-        <p>{{ p.nombre }}</p>
-        <p>{{ p.valor }}</p>
-        <p>{{ p.inventario }}</p>
-        {% if p.foto1 %}
-            <p> si hay foto </p>
-            <img src=" {{ p.foto1.url }} ">
-        {% endif %}
-
-    {% endfor %}
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">nombre</th>
+              <th scope="col">valor</th>
+              <th scope="col">inventario</th>
+              <th scope="col">fotos</th>
+              <th scope="col">editar</th>
+              <th scope="col">eliminar</th>
+              
+            </tr>
+          </thead>
+          <tbody>
+            {% for p in producto %}
+            <tr>
+                <th scope="row">1</th>
+                <td>{{ p.nombre }}</td>
+                <td>{{ p.valor }}</td>
+                <td>{{ p.inventario }}</td>
+                <td class="w-25">
+                    {% if p.foto1 %}
+                    <img class = 'rounded img-fluid' src=" {{ p.foto1.url }} ">
+                    {% endif %}
+                    
+                </td>
+                <td><a href="{% url 'producto_usuario' p.id %}">ver producto</a></td>
+                <td><a href="">editar</a></td>
+                <td><a href="">eliminar</a></td>
+            </tr>
+            {% endfor %}
+           
+          </tbody>
+        </table>
+    </table>
+    
+    
 </div>
 {% endblock %}

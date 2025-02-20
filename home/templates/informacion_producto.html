@@ -1,0 +1,34 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block content %}
+<section>
+    <h6>{{ producto.nombre }}</h6>
+    <p>{{ producto.valor }}</p>
+    <p>{{ producto.categoria_producto}}</p>
+    <p>{{ producto.usuario }}</p>
+    
+    {% if producto.foto1 %}
+        <img src="{{ producto.foto1.url }}" class="card-img-top" alt="producto">
+    {% endif %}
+    
+    {% if producto.foto2 %}
+        <img src="{{ producto.foto2.url }}" class="card-img-top" alt="producto">
+    {% endif %}
+    
+    {% if producto.foto3 %}
+        <img src="{{ producto.foto3.url }}" class="card-img-top" alt="producto">
+    {% endif %}
+    
+    {% if producto.foto4 %}
+        <img src="{{ producto.foto4.url }}" class="card-img-top" alt="producto">
+    {% endif %}
+    
+    {% if producto.foto5 %}
+        <img src="{{ producto.foto5.url }}" class="card-img-top" alt="producto">
+    {% endif %}
+    
+    {% if producto.foto6 %}
+        <img src="{{ producto.foto6.url }}" class="card-img-top" alt="producto">
+    {% endif %}
+</section>
+{% endblock %}

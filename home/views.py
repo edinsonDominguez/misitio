@@ -41,3 +41,9 @@ def ver_mensaje_correo(request):
 def ver_informacion(request):
     return render(request, 'informacion.html')
 
+# se va a mostrar la informacion del producto que selecionamos
+def info_producto(request, producto_id):
+    mi_producto = Producto.objects.get(id=producto_id)
+
+    return render(request, 'informacion_producto.html', {'producto': mi_producto})
+
