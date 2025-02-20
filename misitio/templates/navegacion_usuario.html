@@ -2,6 +2,9 @@
 <nav class="navbar navbar-dark bg-dark">
     <div class="container-fluid">
       <a class="navbar-brand" href="{% url 'inicio_usuario' %}">Distri-Hogar</a>
+      {% if user.is_authenticated %}
+        <h6 class="navbar-brand">Bienvenido, {{ user.username }}</h6>
+      {% endif %}
       <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
