@@ -36,11 +36,11 @@ def ver_producto(request):
        
     if nombre_buscar:
         print('nombre: ', nombre_buscar)
-        mi_producto = Producto.objects.filter(nombre=nombre_buscar, usuario=request.user)
+        mi_producto = Producto.objects.filter(nombre=nombre_buscar, usuario=request.user, estado=True)
     else:
         print('no hay que mostrar')
         #miProducto = Producto.objects.all() 
-        mi_producto = Producto.objects.filter(usuario=request.user)
+        mi_producto = Producto.objects.filter(usuario=request.user, estado=True)
 
         #return render(request, 'productos.html', {'producto': miProducto, 'nombre': nombre_buscar})
     return render(request, 'productos_registrados.html', {'producto':mi_producto, 'nombre': nombre_buscar})
@@ -54,10 +54,10 @@ def galeria_usuario(request):
        
     if nombre_buscar:
         print('nombre: ', nombre_buscar)
-        mis_fotos = Producto.objects.filter(usuario=request.user, nombre=nombre_buscar)
+        mis_fotos = Producto.objects.filter(usuario=request.user, nombre=nombre_buscar, estado=True)
     else:
         print('no hay que mostrar')
-        mis_fotos = Producto.objects.filter(usuario=request.user)
+        mis_fotos = Producto.objects.filter(usuario=request.user, estado=True)
  
     return render(request, 'galeria_fotos.html', {'galeria': mis_fotos, 'nombre': nombre_buscar})
 
@@ -112,4 +112,6 @@ def editar_producto(request, producto_id):
 
 # elimina el producto de la vista usuario
 def eliminar_producto(request, producto_id):
+    print('se elimino el id', producto_id)
+    Producto.objects.filter(id=producto_id).update(estado=False)
     return render(request, 'mensaje_eliminar.html')

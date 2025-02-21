@@ -12,7 +12,7 @@ def ver_productos(request):
        
     if nombre_buscar:
         print('nombre: ', nombre_buscar)
-        miProducto = Producto.objects.filter(nombre=nombre_buscar)
+        miProducto = Producto.objects.filter(nombre=nombre_buscar, estado=True)
     else:
         print('no hay que mostrar')
         miProducto = Producto.objects.all() 
