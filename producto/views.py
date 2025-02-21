@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .forms import ProductoForm
 from .models import Producto
 
@@ -68,7 +68,47 @@ def producto_usuario(request, producto_id):
 
 # edita los campos de los productos
 def editar_producto(request, producto_id):
-    return render(request, 'editar_producto.html')
+    producto = get_object_or_404(Producto, id=producto_id)
+
+    form = ProductoForm(initial ={
+        'nombre': producto.nombre,
+        'valor': producto.valor,
+        'inventario': producto.inventario,
+        'categoria': producto.categoria_producto,
+        'foto1': producto.foto1,
+        'foto2': producto.foto2,
+        'foto3': producto.foto3,
+        'foto4': producto.foto4,
+        'foto5': producto.foto5,
+        'foto6': producto.foto6,
+        })
+    
+    if request.method == "POST":
+        print ('si entro a get ')
+        #print(request.POST['nombre'])
+        form = ProductoForm(request.POST, request.FILES)
+        if form.is_valid(): 
+            print ('si valido')
+            
+            producto.usuario = request.user
+            producto.nombre = form.cleaned_data['nombre']
+            producto.valor = form.cleaned_data['valor']
+            producto.inventario = form.cleaned_data['inventario']
+            producto.categoria_producto = form.cleaned_data['categoria']
+            producto.foto1 = form.cleaned_data['foto1']
+            producto.foto2 = form.cleaned_data['foto2']
+            producto.foto3 = form.cleaned_data['foto3']
+            producto.foto4 = form.cleaned_data['foto4']
+            producto.foto5 = form.cleaned_data['foto5']
+            producto.foto6 = form.cleaned_data['foto6']
+            #print(p.nombre, p.valor, p.inventario, p.categoria_producto, p.usuario)
+            producto.save()           
+            ## va la parte del registro de datos
+            return redirect('ver_productos') # pagina que se a retornar 
+    else:
+        print('no hay nada')
+    
+    return render(request, 'editar_producto.html', {'form':form})
 
 # elimina el producto de la vista usuario
 def eliminar_producto(request, producto_id):

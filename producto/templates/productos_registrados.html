@@ -42,7 +42,7 @@
                     
                 </td>
                 <td><a href="{% url 'producto_usuario' p.id %}">ver producto</a></td>
-                <td><a href="">editar</a></td>
+                <td><a href="{% url 'editar_producto' p.id %}">editar</a></td>
                 <td><a href="">eliminar</a></td>
             </tr>
             {% endfor %}
