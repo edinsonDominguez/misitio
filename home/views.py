@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from producto.models import Producto
+from producto.models import Producto, Categoria
 from .forms import FormContacto
 
 # Create your views here.
@@ -7,6 +7,9 @@ def ver_inicio(request):
     return render(request, 'home.html')
 
 def ver_productos(request):
+
+    ## lista de las categorias que van a ir en el nav
+    categorias = Categoria.objects.all()
     
     nombre_buscar = request.GET.get('q', '')
        
@@ -15,9 +18,9 @@ def ver_productos(request):
         miProducto = Producto.objects.filter(nombre=nombre_buscar, estado=True)
     else:
         print('no hay que mostrar')
-        miProducto = Producto.objects.all(estado=True) 
+        miProducto = Producto.objects.filter(estado=True) 
         
-    return render(request, 'productos.html', {'producto': miProducto, 'nombre': nombre_buscar})
+    return render(request, 'productos.html', {'producto': miProducto, 'nombre': nombre_buscar, 'categoria':categorias})
 
 def ver_contacto(request):
 
@@ -52,3 +55,16 @@ def info_categoria(request, id_categoria):
     mi_categoria = Producto.objects.filter(categoria_producto=id_categoria, estado=True)
     return render(request, 'producto_categoria.html', {'categoria':mi_categoria})
 
+
+def info_precio(request, mensaje):
+    
+    productos = Producto.objects.filter(estado=True)
+    
+    if mensaje == 'mayor':
+        # se organizara el precio de mayor a menor
+        productos = Producto.objects.filter(estado=True).order_by('-valor')
+    if mensaje == 'menor':
+        productos = Producto.objects.filter(estado=True).order_by('valor')
+        
+
+    return render(request, 'productos.html', {'producto':productos} )

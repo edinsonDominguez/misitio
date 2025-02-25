@@ -1,7 +1,9 @@
 {% extends 'index.html' %}
 {% block content %}
 <section>
-    <div class="col-12 border">{% include 'menu_secundario.html' %}</div>
+    <div class="col-12 border">
+        {% include 'menu_categoria.html' %}
+    </div>
 
     <div class="container-fluid">
         <div class="row">
@@ -25,6 +27,16 @@
                 <input type="submit" value="buscar">
             </form>
         </div>
+
+        <div>
+            <p>filtro precio</p>
+            <select action="" method="GET" class="form-select" id="floatingSelect" aria-label="Floating label select example">
+                <option selected>seleccionar filtro</option>
+                <option value="1">mayor a menor </option>
+                <option value="2">menor a mayor </option>
+                
+              </select>
+        </div>
         
        <div class="row row-cols-4 g-4"> 
         {% for p in producto %}
@@ -36,7 +48,14 @@
             {% endif %}
             <div class="card-body">
               <h5 class="card-title">{{ p.nombre }}</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+
+              <p class="card-text">
+                {% if p.descripcion %}
+                {{ p.descripcion }}
+                {% endif %}</p>
+                <h6 class="card-text"> $ {{ p.valor }}</h6>
+                    
+
               <a href="{% url 'inf_producto' p.id %}" class="btn btn-primary">Ver mas ...</a>
             </div>
         </div>

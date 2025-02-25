@@ -1,0 +1,10 @@
+<nav>
+    <!-- este es el menu secundario -->
+    <ul class="nav nav-tabs nav-fill justify-content-center">
+       {% for cat in categoria %}
+        <li class="nav-item"><a class="nav-link" href="{% url 'categoria_producto' cat.id %}">{{ cat.nombre }}</a></li>
+       {% endfor %}
+    </ul>
+ 
+</nav>
+
