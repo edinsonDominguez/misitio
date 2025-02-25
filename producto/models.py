@@ -22,6 +22,8 @@ class Producto(models.Model):
     foto4 = models.ImageField(upload_to='producto', null=True, blank=True)
     foto5 = models.ImageField(upload_to='producto', null=True, blank=True)
     foto6 = models.ImageField(upload_to='producto', null=True, blank=True)
+    descripcion = models.CharField(max_length=120, null=True, blank=True)
+    medida = models.CharField(max_length=60, null=True, blank=True)
 
     def __str__(self):
         return '%s' % (self.nombre)

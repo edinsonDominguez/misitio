@@ -16,6 +16,7 @@ def registrar_producto(request):
             p.valor = form.cleaned_data['valor']
             p.inventario = form.cleaned_data['inventario']
             p.categoria_producto = form.cleaned_data['categoria']
+            p.descripcion = form.cleaned_data['descripcion']
             p.foto1 = form.cleaned_data['foto1']
             p.foto2 = form.cleaned_data['foto2']
             p.foto3 = form.cleaned_data['foto3']

@@ -15,7 +15,7 @@ def ver_productos(request):
         miProducto = Producto.objects.filter(nombre=nombre_buscar, estado=True)
     else:
         print('no hay que mostrar')
-        miProducto = Producto.objects.all() 
+        miProducto = Producto.objects.all(estado=True) 
         
     return render(request, 'productos.html', {'producto': miProducto, 'nombre': nombre_buscar})
 
@@ -46,4 +46,9 @@ def info_producto(request, producto_id):
     mi_producto = Producto.objects.get(id=producto_id)
 
     return render(request, 'informacion_producto.html', {'producto': mi_producto})
+
+# se van a mostrar los productos que estan en la categoria
+def info_categoria(request, id_categoria):
+    mi_categoria = Producto.objects.filter(categoria_producto=id_categoria, estado=True)
+    return render(request, 'producto_categoria.html', {'categoria':mi_categoria})
 
