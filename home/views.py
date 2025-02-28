@@ -7,20 +7,12 @@ def ver_inicio(request):
     return render(request, 'home.html')
 
 def ver_productos(request):
-
-    ## lista de las categorias que van a ir en el nav
-    categorias = Categoria.objects.all()
     
-    nombre_buscar = request.GET.get('q', '')
-       
-    if nombre_buscar:
-        print('nombre: ', nombre_buscar)
-        miProducto = Producto.objects.filter(nombre=nombre_buscar, estado=True)
-    else:
-        print('no hay que mostrar')
-        miProducto = Producto.objects.filter(estado=True) 
-        
-    return render(request, 'productos.html', {'producto': miProducto, 'nombre': nombre_buscar, 'categoria':categorias})
+    ## lista de las categorias que van a ir en el nav
+    categoria = Categoria.objects.all()
+    mi_producto=Producto.objects.filter(estado=True)[:12]
+      
+    return render(request, 'productos.html', {'producto': mi_producto, 'categoria':categoria})
 
 def ver_contacto(request):
 
@@ -51,20 +43,35 @@ def info_producto(request, producto_id):
     return render(request, 'informacion_producto.html', {'producto': mi_producto})
 
 # se van a mostrar los productos que estan en la categoria
-def info_categoria(request, id_categoria):
-    mi_categoria = Producto.objects.filter(categoria_producto=id_categoria, estado=True)
-    return render(request, 'producto_categoria.html', {'categoria':mi_categoria})
+def info_categoria(request, pk):
+    categoria = Categoria.objects.all()
+    producto = Producto.objects.filter(categoria_producto=pk, estado=True)[:12]
+    return render(request, 'productos.html', {'producto':producto, 'categoria':categoria}  )
 
 
-def info_precio(request, mensaje):
-    
-    productos = Producto.objects.filter(estado=True)
-    
+# se van a organizar los productos de mayor a menor y viceversa
+def info_precio(request):
+    categoria = Categoria.objects.all()
+    mensaje = request.GET.get('q')
+    print('el valor del mensaje: ', mensaje)
     if mensaje == 'mayor':
-        # se organizara el precio de mayor a menor
-        productos = Producto.objects.filter(estado=True).order_by('-valor')
+        productos = Producto.objects.filter(estado=True).order_by('-valor')[:12]
     if mensaje == 'menor':
-        productos = Producto.objects.filter(estado=True).order_by('valor')
+        productos = Producto.objects.filter(estado=True).order_by('valor')[:12]
         
+    return render(request, 'producto_valor.html', {'producto':productos, 'categoria': categoria} )
 
-    return render(request, 'productos.html', {'producto':productos} )
+# busca los productos por el nombre
+def buscador(request):
+    categoria = Categoria.objects.all()
+    mi_producto = Producto.objects.filter(estado=True)[:12]
+    
+    nombre_buscar = request.GET.get('q')
+    print('nombre: ', nombre_buscar)
+
+    if nombre_buscar:
+        mi_producto = Producto.objects.filter(nombre__icontains=nombre_buscar, estado=True)
+    else:
+        mi_producto = Producto.objects.filter(estado=True)[:12] 
+  
+    return render(request, 'productos.html', {'producto':mi_producto, 'categoria':categoria} )

@@ -20,22 +20,25 @@
             <div class="col border">11</div>
             <div class="col border">12</div>
         </div>
+
+        
         <div>
             <p>buscador</p>
-            <form action="productos" method="GET">
-                <input type="text" name="q" value="{{ nombre|escape }}">
+            <form action="{% url 'buscador' %}" method="GET">
+                <input type="text" name="q" >
                 <input type="submit" value="buscar">
             </form>
         </div>
 
         <div>
             <p>filtro precio</p>
-            <select action="" method="GET" class="form-select" id="floatingSelect" aria-label="Floating label select example">
-                <option selected>seleccionar filtro</option>
-                <option value="1">mayor a menor </option>
-                <option value="2">menor a mayor </option>
+            <form class="form-check" action="{% url 'orden_precio' %}" method="GET">
+            
+                <input type="radio" name="q" value="mayor">mayor a menor</input>
+                <input type="radio" name="q" value="menor">menor a mayor</input>
                 
-              </select>
+                <input type="submit" value="aplicar filtro">
+            </form>
         </div>
         
        <div class="row row-cols-4 g-4"> 
