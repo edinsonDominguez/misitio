@@ -54,12 +54,13 @@ def info_precio(request):
     categoria = Categoria.objects.all()
     mensaje = request.GET.get('q')
     print('el valor del mensaje: ', mensaje)
+
     if mensaje == 'mayor':
         productos = Producto.objects.filter(estado=True).order_by('-valor')[:12]
     if mensaje == 'menor':
         productos = Producto.objects.filter(estado=True).order_by('valor')[:12]
         
-    return render(request, 'producto_valor.html', {'producto':productos, 'categoria': categoria} )
+    return render(request, 'productos.html', {'producto':productos, 'categoria': categoria} )
 
 # busca los productos por el nombre
 def buscador(request):

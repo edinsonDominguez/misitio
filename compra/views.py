@@ -5,8 +5,8 @@ from producto.models import Producto
 
 # se visualizaran los productos que ingresamos al carrito de compras
 
-def ver_carro(request):
-    return render(request, 'carro_compra.html')
+#def ver_carro(request):
+#    return render(request, 'carro_compra.html')
 
 # va agregar el producto al carrito
 def agregar_producto(request, producto_id):
