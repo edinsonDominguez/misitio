@@ -38,3 +38,11 @@ def limpiar_compra(request):
     compra.limpiar_compra()
 
     return redirect('Productos')
+
+# envia los productos que el cliente pidio
+def enviar_compra(request):
+    
+    for key, value in request.session['compra'].items():
+        print('productos: ', value['nombre'])
+
+    return redirect('Productos')

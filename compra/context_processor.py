@@ -3,7 +3,6 @@
 def imprimir_context(request):
     cantidad = 0
     cantidad = len(request.session['compra'].items())
-    print('cantidad: ', cantidad)
     # esta es la variable que se imprime
     return {'texto': cantidad}
 
