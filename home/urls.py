@@ -10,5 +10,6 @@ urlpatterns =[
     path('inf_producto/<int:producto_id>/', views.info_producto, name='inf_producto'),
     path('inf_categoria/<int:pk>/', views.info_categoria, name='categoria_producto'),
     path('producto_orden/', views.info_precio, name='orden_precio'), 
-    path('busqueda/', views.buscador, name='buscador'), 
+    path('busqueda/', views.buscador, name='buscador'),
+    path('comentario/<int:pk>', views.agregar_comentario, name='comentario') 
 ]

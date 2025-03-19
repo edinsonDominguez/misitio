@@ -30,5 +30,16 @@
     {% if producto.foto6 %}
         <img src="{{ producto.foto6.url }}" class="card-img-top" alt="producto">
     {% endif %}
+
+    <div class="container">
+        <p>comentarios</p>
+        <form action="{% url 'comentario' producto.id %}" method="GET">
+            <input type="text" name="q">
+            <input type="submit" value="agregar">
+        </form>
+    </div>
+
 </section>
+
+
 {% endblock %}

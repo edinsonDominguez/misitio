@@ -1,6 +1,8 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from producto.models import Producto, Categoria
 from .forms import FormContacto
+from comentarios.forms import ComentarioForm
+from comentarios.models import Comentarios 
 
 # Create your views here.
 def ver_inicio(request):
@@ -36,10 +38,24 @@ def ver_mensaje_correo(request):
 def ver_informacion(request):
     return render(request, 'informacion.html')
 
+# se toma el comentario del usuario 
+def agregar_comentario(request, pk):
+    producto = get_object_or_404(Producto, id = pk)
+    mensaje = request.GET.get('q')
+ 
+    c = Comentarios()
+    c.id_usuario = request.user
+    c.id_producto = producto
+    c.comentario = mensaje
+    c.save()
+
+    return redirect('mensaje_correo')
+
 # se va a mostrar la informacion del producto que selecionamos
 def info_producto(request, producto_id):
     mi_producto = Producto.objects.get(id=producto_id)
-
+    
+    
     return render(request, 'informacion_producto.html', {'producto': mi_producto})
 
 # se van a mostrar los productos que estan en la categoria
