@@ -1,5 +1,6 @@
-{% extends 'usuario.html' %}
+{% extends 'index.html' %}
 {% block content %}
+{% include 'producto/navegacion_producto.html' %}
 <section class="container border">
     <h4>Productos registrados</h4>
     <a href="{% url 'RegistroPro' %}">volver a registrar </a>

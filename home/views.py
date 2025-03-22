@@ -1,12 +1,11 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from producto.models import Producto, Categoria
 from .forms import FormContacto
-from comentarios.forms import ComentarioForm
 from comentarios.models import Comentarios 
 
 # Create your views here.
 def ver_inicio(request):
-    return render(request, 'home.html')
+    return render(request, 'home/home.html')
 
 def ver_productos(request):
     
@@ -14,7 +13,7 @@ def ver_productos(request):
     categoria = Categoria.objects.all()
     mi_producto=Producto.objects.filter(estado=True)[:12]
       
-    return render(request, 'productos.html', {'producto': mi_producto, 'categoria':categoria})
+    return render(request, 'home/productos.html', {'producto': mi_producto, 'categoria':categoria})
 
 def ver_contacto(request):
 
@@ -23,20 +22,20 @@ def ver_contacto(request):
         mi_form = FormContacto(request.POST)
 
         if mi_form.is_valid():
-            return redirect('mensaje_correo')
+            return redirect('home/mensaje_correo')
     
     else:
         mi_form = FormContacto()
-    return render(request, 'contacto.html', {'form':mi_form})
+    return render(request, 'home/contacto.html', {'form':mi_form})
 
 # mensaje exitoso de envio del correo
 def ver_mensaje_correo(request):
 
-    return render(request, 'mensaje_correo.html')
+    return render(request, 'home/mensaje_correo.html')
 
 # informacion de la empresa 
 def ver_informacion(request):
-    return render(request, 'informacion.html')
+    return render(request, 'home/informacion.html')
 
 # se toma el comentario del usuario 
 def agregar_comentario(request, pk):
@@ -49,20 +48,20 @@ def agregar_comentario(request, pk):
     c.comentario = mensaje
     c.save()
 
-    return redirect('mensaje_correo')
+    return redirect('home/mensaje_correo')
 
 # se va a mostrar la informacion del producto que selecionamos
 def info_producto(request, producto_id):
     mi_producto = Producto.objects.get(id=producto_id)
     
     
-    return render(request, 'informacion_producto.html', {'producto': mi_producto})
+    return render(request, 'home/informacion_producto.html', {'producto': mi_producto})
 
 # se van a mostrar los productos que estan en la categoria
 def info_categoria(request, pk):
     categoria = Categoria.objects.all()
     producto = Producto.objects.filter(categoria_producto=pk, estado=True)[:12]
-    return render(request, 'productos.html', {'producto':producto, 'categoria':categoria}  )
+    return render(request, 'home/productos.html', {'producto':producto, 'categoria':categoria}  )
 
 
 # se van a organizar los productos de mayor a menor y viceversa
@@ -76,7 +75,7 @@ def info_precio(request):
     if mensaje == 'menor':
         productos = Producto.objects.filter(estado=True).order_by('valor')[:12]
         
-    return render(request, 'productos.html', {'producto':productos, 'categoria': categoria} )
+    return render(request, 'home/productos.html', {'producto':productos, 'categoria': categoria} )
 
 # busca los productos por el nombre
 def buscador(request):
@@ -91,4 +90,4 @@ def buscador(request):
     else:
         mi_producto = Producto.objects.filter(estado=True)[:12] 
   
-    return render(request, 'productos.html', {'producto':mi_producto, 'categoria':categoria} )
+    return render(request, 'home/productos.html', {'producto':mi_producto, 'categoria':categoria} )

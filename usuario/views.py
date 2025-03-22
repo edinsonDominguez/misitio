@@ -8,7 +8,7 @@ from django.contrib import messages
 class Registro(View):
     def get(self, request):
         form = UserCreationForm()
-        return render(request, 'registro_user.html', {'form':form})
+        return render(request, 'usuario/registro_user.html', {'form':form})
 
     def post(self, request):
         form = UserCreationForm(request.POST)
@@ -22,7 +22,7 @@ class Registro(View):
             for msg in form.error_messages:
                 messages.error(request, form.error_messages[msg])
         
-            return render(request, 'registro_user.html', {'form': form})
+            return render(request, 'usuario/registro_user.html', {'form': form})
 
 ## ok
 def cerrar_sesion(request):
@@ -48,4 +48,4 @@ def login_usuario(request):
             messages.error(request, 'Ingresaste mal la informacion')
   
     form = AuthenticationForm()
-    return render(request, 'login_user.html', {'form':form})
+    return render(request, 'usuario/login_user.html', {'form':form})

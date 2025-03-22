@@ -26,10 +26,10 @@ def registrar_producto(request):
             print(p.nombre, p.valor, p.inventario, p.categoria_producto, p.usuario)
             p.save()           
             ## va la parte del registro de datos
-            return redirect('ver_productos') # pagina que se a retornar 
+            return redirect('producto/ver_productos') # pagina que se a retornar 
     else:
         form = ProductoForm()
-    return render(request, 'registro_productos.html', {'form':form})    
+    return render(request, 'producto/registro_productos.html', {'form':form})    
 
 
 def ver_producto(request):
@@ -44,10 +44,10 @@ def ver_producto(request):
         mi_producto = Producto.objects.filter(usuario=request.user, estado=True)
 
         #return render(request, 'productos.html', {'producto': miProducto, 'nombre': nombre_buscar})
-    return render(request, 'productos_registrados.html', {'producto':mi_producto, 'nombre': nombre_buscar})
+    return render(request, 'producto/productos_registrados.html', {'producto':mi_producto, 'nombre': nombre_buscar})
 
 def ver_inicio(request):
-    return render(request, 'inicio.html')
+    return render(request, 'producto/inicio.html')
 
 
 def galeria_usuario(request):
@@ -60,12 +60,12 @@ def galeria_usuario(request):
         print('no hay que mostrar')
         mis_fotos = Producto.objects.filter(usuario=request.user, estado=True)
  
-    return render(request, 'galeria_fotos.html', {'galeria': mis_fotos, 'nombre': nombre_buscar})
+    return render(request, 'producto/galeria_fotos.html', {'galeria': mis_fotos, 'nombre': nombre_buscar})
 
 # se muestra la informacion del producto que seleccionamos 
 def producto_usuario(request, producto_id):
     mi_producto = Producto.objects.get(id=producto_id)
-    return render(request, 'info_producto_usuario.html', {'producto': mi_producto})
+    return render(request, 'producto/info_producto_usuario.html', {'producto': mi_producto})
 
 # edita los campos de los productos
 def editar_producto(request, producto_id):
@@ -105,14 +105,14 @@ def editar_producto(request, producto_id):
             #print(p.nombre, p.valor, p.inventario, p.categoria_producto, p.usuario)
             producto.save()           
             ## va la parte del registro de datos
-            return redirect('ver_productos') # pagina que se a retornar 
+            return redirect('producto/ver_productos') # pagina que se a retornar 
     else:
         print('no hay nada')
     
-    return render(request, 'editar_producto.html', {'form':form})
+    return render(request, 'producto/editar_producto.html', {'form':form})
 
 # elimina el producto de la vista usuario
 def eliminar_producto(request, producto_id):
     print('se elimino el id', producto_id)
     Producto.objects.filter(id=producto_id).update(estado=False)
-    return render(request, 'mensaje_eliminar.html')
+    return render(request, 'producto/mensaje_eliminar.html')

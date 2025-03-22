@@ -18,20 +18,13 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls.static import static
 from django.conf import settings
-from .views import primera_pagina, hora_actual, suma_hora, nombre_usuario, persona, persona_sistema
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', include('home.urls')), # dirige a la pagina principal
+    path('producto/', include('producto.urls')), # se dirige al area de registro de productos
+    path('usuario/', include('usuario.urls')), # se dirige al area de
     path('carrito/', include('compra.urls')),
-    path('', include('home.urls')),
-    path('producto/', include('producto.urls')),
-    path('usuario/', include('usuario.urls')),
-    path('primera_pagina', primera_pagina, name = 'Primera'),
-    path('hora', hora_actual, name = 'Hora'),
-    path('suma_hora/<numero>', suma_hora, name = 'Suma'),
-    path('nombre/<nombre>', nombre_usuario, name = 'Nombre'),
-    path('persona', persona, name = 'Persona'),
-    path('persona_sistema', persona_sistema, name = 'Persona2'),
-    
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 #settings.STATIC_URL, 

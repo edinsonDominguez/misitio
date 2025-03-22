@@ -1,7 +1,7 @@
 {% extends 'index.html' %}
-{% load static %}
 {% block content %}
-<section>
+{% include 'producto/navegacion_producto.html' %}
+<section class="container border">
     <h6>{{ producto.nombre }}</h6>
     <p>{{ producto.valor }}</p>
     <p>{{ producto.categoria_producto}}</p>
@@ -30,16 +30,5 @@
     {% if producto.foto6 %}
         <img src="{{ producto.foto6.url }}" class="card-img-top" alt="producto">
     {% endif %}
-
-    <div class="container">
-        <p>comentarios</p>
-        <form action="{% url 'comentario' producto.id %}" method="GET">
-            <input type="text" name="q">
-            <input type="submit" value="agregar">
-        </form>
-    </div>
-
 </section>
-
-
 {% endblock %}

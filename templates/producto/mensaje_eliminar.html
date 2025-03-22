@@ -1,5 +1,6 @@
-{% extends 'usuario.html' %}
+{% extends 'index.html' %}
 {% block content %}
+{% include 'producto/navegacion_producto.html' %}
 <section>
     <h6>ya se elimino el producto</h6>
     <a href="{% url 'ver_productos' %}">ver productos</a>

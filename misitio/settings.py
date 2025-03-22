@@ -65,7 +65,7 @@ ROOT_URLCONF = 'misitio.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['C:/Users/edinson/Documents/paginas/misitio/misitio/templates/'],
+        'DIRS': ['C:/Users/edinson/Documents/paginas/misitio/templates/'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
