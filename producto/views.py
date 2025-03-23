@@ -26,7 +26,7 @@ def registrar_producto(request):
             print(p.nombre, p.valor, p.inventario, p.categoria_producto, p.usuario)
             p.save()           
             ## va la parte del registro de datos
-            return redirect('producto/ver_productos') # pagina que se a retornar 
+            return redirect('ver_productos') # pagina que se a retornar 
     else:
         form = ProductoForm()
     return render(request, 'producto/registro_productos.html', {'form':form})    
@@ -105,7 +105,7 @@ def editar_producto(request, producto_id):
             #print(p.nombre, p.valor, p.inventario, p.categoria_producto, p.usuario)
             producto.save()           
             ## va la parte del registro de datos
-            return redirect('producto/ver_productos') # pagina que se a retornar 
+            return redirect('ver_productos') # pagina que se a retornar 
     else:
         print('no hay nada')
     

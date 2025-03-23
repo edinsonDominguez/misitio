@@ -22,7 +22,7 @@ def ver_contacto(request):
         mi_form = FormContacto(request.POST)
 
         if mi_form.is_valid():
-            return redirect('home/mensaje_correo')
+            return redirect('mensaje_correo')
     
     else:
         mi_form = FormContacto()
@@ -41,14 +41,15 @@ def ver_informacion(request):
 def agregar_comentario(request, pk):
     producto = get_object_or_404(Producto, id = pk)
     mensaje = request.GET.get('q')
- 
+    print(mensaje)
+    print(request.user)
     c = Comentarios()
     c.id_usuario = request.user
     c.id_producto = producto
     c.comentario = mensaje
     c.save()
 
-    return redirect('home/mensaje_correo')
+    return redirect('mensaje_correo')
 
 # se va a mostrar la informacion del producto que selecionamos
 def info_producto(request, producto_id):

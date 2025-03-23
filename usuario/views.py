@@ -41,7 +41,11 @@ def login_usuario(request):
             usuario = authenticate(username=nombre_usuario, password=contra_usuario)
             if usuario is not None:
                 login(request, usuario)
-                return redirect('inicio_usuario')
+                
+                if usuario.is_staff:
+                    return redirect('inicio_usuario')
+                else:
+                    return redirect('Home')
             else:
                 messages.error(request, 'usuario no valido')
         else:
