@@ -1,9 +1,17 @@
 <nav>
     <!-- este es el menu secundario -->
     <ul class="nav nav-tabs nav-fill justify-content-center">
-       {% for cat in categoria %}
+        
+        {% for cat in categoria %}
         <li class="nav-item"><a class="nav-link" href="{% url 'categoria_producto' cat.id %}">{{ cat.nombre }}</a></li>
-       {% endfor %}
+        {% endfor %}
+
+       {% if request.session.compra.items %}
+       <!-- boton ativador del  modal -->
+       <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#carro">
+       compra {{ texto }}
+       </button>
+       {% endif %}
     </ul>
  
 </nav>
